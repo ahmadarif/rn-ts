@@ -11,14 +11,16 @@ export default class HomeScreen extends React.Component<Props> {
     super(props);
   }
 
-  static navigationOptions = {
-    title: 'Home',
+  static navigationOptions = ({ navigation }: {navigation: NavigationScreenProp<any>}) => {
+    return {
+      title: 'Home',
+      headerLeft: (
+        <Button onPress={() => navigation.navigate('MyModal')} title="Info" color="#000" />
+      ),
+    };
   };
 
   detailClicked() {
-    console.log('diklik');
-    console.log(this.props.navigation);
-
     this.props.navigation.navigate('Detail', {
       itemId: 5,
       otherParam: 'anything you want here'
