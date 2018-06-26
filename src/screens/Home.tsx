@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 type Props = {
   navigation: NavigationScreenProp<any>
@@ -14,8 +15,8 @@ export default class HomeScreen extends React.Component<Props> {
   static navigationOptions = ({ navigation }: {navigation: NavigationScreenProp<any>}) => {
     return {
       title: 'Home',
-      headerLeft: (
-        <Button onPress={() => navigation.navigate('MyModal')} title="Info" color="#000" />
+      headerRight: (
+        <Icon name='info-outline' size={30} style={{marginRight: 10}} onPress={() => HomeScreen.infoClicked()} />
       ),
     };
   };
@@ -27,11 +28,15 @@ export default class HomeScreen extends React.Component<Props> {
     });
   }
 
+  static infoClicked(): any {
+    alert('nah diklik');
+  }
+
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Home Screen</Text>
-        <Button title="Go to Detail" onPress={() => this.detailClicked()} />
+        <Button title="Go to Details" onPress={() => this.detailClicked()} />
       </View>
     );
   }
