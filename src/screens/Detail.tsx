@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
-import { NavigationScreenProp } from 'react-navigation';
+import { NavigationScreenProp, NavigationScreenOptions } from 'react-navigation';
 
 type Props = {
   navigation: NavigationScreenProp<any>
@@ -11,11 +11,11 @@ export default class DetailScreen extends React.Component<Props> {
     super(props);
   }
 
-  static navigationOptions = ({ navigation } : { navigation: NavigationScreenProp<any>}) => {
+  static navigationOptions = ({ navigation } : { navigation: NavigationScreenProp<any>}): NavigationScreenOptions => {
     return {
       title: navigation.getParam('otherParam', 'A Nested Details Screen'),
-    };
-  };
+    }
+  }
 
   detailClicked() {
     this.props.navigation.push('Detail', {
